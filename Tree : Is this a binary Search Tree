@@ -1,0 +1,14 @@
+#This code is just the function implementing the check to see if it is binary tree or not and returning a true if yes and false if no.
+#include <climits>
+   bool checkBST(Node* root) {
+     return check_values(root,INT_MIN,INT_MAX);
+      }
+   bool check_values(Node *root,int min,int max){
+       if(root == NULL){
+           return true;
+       }
+       if(root->data <= min || root->data >= max){
+           return false;
+       }
+       return check_values(root->left,min,root->data) && check_values(root->right,root->data,max);
+   }
