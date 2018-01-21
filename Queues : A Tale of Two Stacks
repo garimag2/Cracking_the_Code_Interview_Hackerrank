@@ -10,9 +10,6 @@ using namespace std;
 class MyQueue {
   
     public:
-        int top=0;
-        int top1=0;
-        int i=0;
         stack<int> stack_newest_on_top, stack_oldest_on_top;   
         void push(int x) {
               if(stack_newest_on_top.empty()){
