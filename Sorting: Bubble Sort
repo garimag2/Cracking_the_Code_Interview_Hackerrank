@@ -1,0 +1,35 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int sort_vector(vector<int> &a){
+    int temp=0;
+    int count =0;
+    for(int i=0;i<a.size();i++){
+        for(int j=i;j<a.size();j++){
+        if(a[i]>a[j]){
+            temp = a[j];
+            a[j] = a[i];
+            a[i] = temp;
+            count ++;
+        }
+      }
+    }
+    return count;
+}
+
+int main() {
+   int n;
+    cin >> n;
+    int count=0;
+    vector<int> a(n);
+    for(int a_i = 0;a_i < n;a_i++){
+       cin >> a[a_i];
+    }
+  count = sort_vector(a);
+  cout << "Array is sorted in " << count << " swaps." << endl;
+  cout << "First Element: " << a[0] << endl << "Last Element: " << a[a.size()-1] << endl;
+  return 0;
+}
