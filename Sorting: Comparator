@@ -1,0 +1,63 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+struct Player {
+    string name;
+    int score;
+}; 
+
+#include <string>
+#include <stdio.h>
+#include<bits/stdc++.h>
+
+vector<Player> comparator(vector<Player> players) {
+      for(int i=0;i<players.size();i++){
+         for(int j=i;j<players.size();j++){
+             int f=0;
+             if(players[i].score < players[j].score){
+                 f=1;
+             }
+             if(players[i].score == players[j].score){
+                if(strcmp(players[i].name.c_str(),players[j].name.c_str())>0)
+                {   f=1;
+                   
+                }
+             }
+             if(f==1){
+                 int s1 = players[j].score;
+                 players[j].score = players[i].score;
+                 players[i].score = s1;
+                 string s3 = players[j].name;
+                 players[j].name = players[i].name;
+                 players[i].name = s3;
+             }
+         }
+      }
+      return players;
+}
+
+int main() {
+    
+    int n;
+    cin >> n;
+    vector< Player > players;
+    string name;
+    int score;
+    for(int i = 0; i < n; i++){
+        cin >> name >> score;
+        Player p1;
+        p1.name = name, p1.score = score;
+        players.push_back(p1);
+    }
+    
+    vector<Player > answer = comparator(players);
+    for(int i = 0; i < answer.size(); i++) {
+        cout << answer[i].name << " " << answer[i].score << endl;
+    }
+    return 0;
+}
